@@ -1,0 +1,6 @@
+.idea/
+.vscode/
+litters-backend/node_modules/
+build/
+tmp/
+temp/
