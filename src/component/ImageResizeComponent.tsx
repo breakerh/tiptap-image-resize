@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import { NodeViewWrapper } from '@tiptap/react'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 export default (props:any) => {
     const handler = (mouseDownEvent: React.MouseEvent<HTMLImageElement>) => {
@@ -27,13 +26,13 @@ export default (props:any) => {
     };
     return (
         <NodeViewWrapper className="image-resizer">
-            <img {...props.node.attrs} className='postimage' />
-            {/*
-                @ts-ignore */}
+            {props.extension.options.useFigure? (
+                <figure>
+                    <img {...props.node.attrs} className='postimage' />
+                </figure>
+            ) : (<img {...props.node.attrs} className='postimage' />)}
             <div className='resize-trigger' onMouseDown={handler}>
-                {/*
-                @ts-ignore */}
-                <FontAwesomeIcon icon="fa-solid fa-circle-dot" />
+                {props.extension.options.resizeIcon}
             </div>
         </NodeViewWrapper>
     )

@@ -1,3 +1,4 @@
+import {Component, FC, ReactElement} from "react";
 import {mergeAttributes, nodeInputRule, Node} from "@tiptap/core";
 import {ReactNodeViewRenderer} from "@tiptap/react";
 import ImageResizeComponent from "./component/ImageResizeComponent";
@@ -7,6 +8,8 @@ export interface ImageOptions {
   inline: boolean,
   allowBase64: boolean,
   HTMLAttributes: Record<string, any>,
+  resizeIcon: FC|Component|ReactElement,
+  useFigure: boolean
 }
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -18,6 +21,15 @@ declare module '@tiptap/core' {
 export const inputRegex = /(!\[(.+|:?)]\((\S+)(?:(?:\s+)["'](\S+)["'])?\))$/
 export const ImageResize = Image.extend<ImageOptions>({
   name: "imageResize",
+  addOptions() {
+    return {
+      inline: false,
+      allowBase64: false,
+      HTMLAttributes: {},
+      resizeIcon: <>⊙</>,
+      useFigure: false
+    }
+  },
   addAttributes() {
     return {
       width: {
