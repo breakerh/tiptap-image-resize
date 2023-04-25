@@ -1,4 +1,4 @@
-import {Component, FC, ReactElement} from "react";
+import React, {Component, FC, ReactElement} from "react";
 import {mergeAttributes, nodeInputRule, Node} from "@tiptap/core";
 import {ReactNodeViewRenderer} from "@tiptap/react";
 import ImageResizeComponent from "./component/ImageResizeComponent";
@@ -32,6 +32,7 @@ export const ImageResize = Image.extend<ImageOptions>({
   },
   addAttributes() {
     return {
+      ...this.parent?.(),
       width: {
         default: '100%',
         renderHTML: (attributes) => {
@@ -48,24 +49,7 @@ export const ImageResize = Image.extend<ImageOptions>({
           };
         }
       },
-      isDraggable: {
-        default: true,
-        renderHTML: (attributes) => {
-          return {};
-        }
-      }
     };
-  },
-  parseHTML() {
-    return [
-      {
-        tag: 'image-resizer',
-      },
-    ]
-  },
-
-  renderHTML({ HTMLAttributes }) {
-    return ['image-resizer', mergeAttributes(this.options.HTMLAttributes,HTMLAttributes)]
   },
 
   addNodeView() {

@@ -10,9 +10,9 @@
   ],
   "peerDependencies": {
     "@tiptap/core": "^2.0.0-beta.1",
-    "@tiptap/react": "^2.0.0-beta.109",
     "@tiptap/extension-image": "^2.0.0-beta.27",
-    "react": "^17.0.2"
+    "@tiptap/react": "^2.0.0-beta.109",
+    "react": "^17.0.2 || ^18"
   },
   "main": "src/index.ts",
   "files": [
@@ -23,5 +23,6 @@
     "url": "https://github.com/breakerh/tiptap-image-resize"
   },
   "dependencies": {
+    "@types/react": "^18.0.38"
   }
 }
